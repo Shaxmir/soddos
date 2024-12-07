@@ -1,0 +1,144 @@
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow');
+body {
+    color: #4c4e52;
+    margin: auto;
+    background: #dddede;
+    font-size: 14px;
+    width: 100%;
+    max-width: 650px;
+    font-family: 'PT Sans', sans-serif;
+}
+a {
+    text-decoration: none;
+    color: #14b990;
+}
+.head {
+    background: url(/images/gr-logo.png) repeat-x #222222;
+    height: 80px;
+}
+.head a {
+    padding: 20px;
+  }
+.podmenu {
+    color: #555;
+    background: #fff;
+    padding: 11px;
+    box-shadow: 0px 2px 2px #c4c4c4;
+    margin: 0 0 5px 0;
+}
+    .topmenu {
+		background-color: #181717;
+		padding: 9px 0 9px 0;
+	}
+	.topmenu a {
+		padding: 9px 15px 9px 15px;
+		font-size: 14px;
+		color: #fff;
+		text-decoration: none;
+	}
+	.topmenu a:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+.content {
+   
+}
+.title {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+#box {
+    background: #222222;
+    color: #fafafa;
+}
+input[type="text"], input[type="password"] {
+    color: #14d6a6;
+    width: 60%;
+    padding: 8px;
+    background: #181717;
+    border: 1px solid #141414;
+    margin: 10px 0 5px 5px;
+    outline:none;
+}  
+input:focus {
+border: #14d6a6 1px solid;
+    box-shadow: 0 0 5px rgb(20, 214, 166);
+    -webkit-box-shadow: 0 0 5px rgb(21, 113, 90);
+}
+
+input[type="submit"] {
+width: 30%;
+color: #14d6a6;
+padding: 9px;
+margin: 10px 0 10px 0;
+background: #181717;
+border: 0;
+border-bottom: 2px solid #060606;
+}
+.foot {
+background: #222222;
+padding: 20px;
+color: #14b990;
+font-size: 13px;
+box-shadow: 0px 2px 2px #c4c4c4;
+}
+.foot_l a {
+display: inline-block;
+background: #313131;
+padding: 7px;
+margin-right: 5px;
+color: #fff;
+text-decoration: none;
+}
+.tmenu {
+    background: url(/images/gr.png) repeat-x #222222;
+    padding: 10px;
+    color: #fff;
+}
+.post {
+    background: url(/images/mask.png) no-repeat right bottom #80c72c;
+    padding: 10px;
+    box-shadow: 0px 2px 2px #c4c4c4;
+    margin: 0 0 5px 0;
+}
+.post2 {
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 2px #c4c4c4;
+    margin: 0 0 5px 0;
+}
+.description {
+    color: #fff;
+    
+}
+.description2 {
+    color: #4c4e52;
+}
+/* pc */
+@media all and (min-width: 1000px){
+    td.logo {
+        vertical-align: midle;
+        width:90%;
+        border-right: none;
+    }
+    td.menu {
+        vertical-align:middle;
+        width:10%;
+    }
+	}
+/* mobilie */
+@media (max-width: 1000px) and (min-width: 1px){
+    td.logo {
+        vertical-align: midle;
+        width: 85%;
+        border-right: none;
+    }
+    td.menu {
+        vertical-align: middle;
+        width: 15%;
+    }
+}
+.head a {
+    padding: 20px;
+  }
