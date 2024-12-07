@@ -1,10 +1,10 @@
-
 <!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+{% load static %}
 <html><head>
 <meta http-equiv="Content-Type" content="charset=utf-8"/>
 <title>Аномимный портал</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head><body>
     <script type="text/javascript">
@@ -23,8 +23,8 @@ function openbox(id){
     <div class="head">
         <table style="width:100%" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="logo"><img src="images/logo.png" alt="logo"></td>
-            <td class="menu"><a href="#" onclick="openbox('box'); return false"><img src="images/menu.png" alt="logo"></a></td>
+            <td class="logo"><img src="/static/images/logo.png" alt="logo"></td>
+            <td class="menu"><a href="#" onclick="openbox('box'); return false"><img src="/static/images/menu.png" alt="logo"></a></td>
     </tr>
 </table>
 </div>
@@ -46,7 +46,7 @@ function openbox(id){
                         занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна, что постоянный количественный рост и 
                         сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании модели развития.</div>
 				</div>
-        <div class="tmenu"><img src="images/menu.png" alt="."></div>
+        <div class="tmenu"><img src="/static/images/menu.png" alt="."></div>
         <div class="post2">
 					<div class="title">Статья 423</div>
 					<div class="description2">Повседневная практика показывает, что рамки и место обучения кадров способствует подготовки и реализации позиций, 
