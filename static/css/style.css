@@ -14,7 +14,7 @@ a {
     color: #14b990;
 }
 .head {
-    background: url(/images/gr-logo.png) repeat-x #222222;
+    background: url(images/gr-logo.png) repeat-x #222222;
     height: 80px;
 }
 .head a {
@@ -92,12 +92,12 @@ color: #fff;
 text-decoration: none;
 }
 .tmenu {
-    background: url(/images/gr.png) repeat-x #222222;
+    background: url(images/gr.png) repeat-x #222222;
     padding: 10px;
     color: #fff;
 }
 .post {
-    background: url(/images/mask.png) no-repeat right bottom #80c72c;
+    background: url(images/mask.png) no-repeat right bottom #80c72c;
     padding: 10px;
     box-shadow: 0px 2px 2px #c4c4c4;
     margin: 0 0 5px 0;
