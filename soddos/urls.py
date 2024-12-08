@@ -18,7 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from soddos_one import views
 
+from django.contrib import admin
+from django.urls import path, include
+from soddos_one import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('saccount/', include('saccount.urls')),
 ]

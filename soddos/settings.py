@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'soddos_one'
+    'soddos_one',
+    'saccount',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +81,27 @@ WSGI_APPLICATION = 'soddos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sbasa',  # Имя вашей базы данных
+        'USER': 'soddos',  # Имя пользователя базы данных
+        'PASSWORD': 'Shax312mir',  # Пароль пользователя
+        'HOST': '127.0.0.1',  # Адрес сервера (localhost)
+        'PORT': '5432',  # Порт PostgreSQL
     }
 }
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+SESSION_COOKIE_SECURE = True  # Использовать только HTTPS для передачи сессий
+CSRF_COOKIE_SECURE = True    # Использовать только HTTPS для передачи CSRF-токенов
+
+SECURE_BROWSER_XSS_FILTER = True       # Включает XSS-фильтр браузера
+SECURE_CONTENT_TYPE_NOSNIFF = True    # Предотвращает MIME-атаку
+X_FRAME_OPTIONS = 'DENY'              # Запрещает загрузку вашего сайта в iframe
+SECURE_HSTS_SECONDS = 31536000        # Включает HSTS на год
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True # HSTS также для поддоменов
 
 
 # Password validation
