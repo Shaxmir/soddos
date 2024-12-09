@@ -5,10 +5,12 @@
 <title>{% block title %} Аномимный портал {% endblock title %}</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/info_block.css' %}" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <script type="text/javascript">
+<script src="{% static 'js/info_block.js' %}"></script>
+<script type="text/javascript">
 
 function openbox(id){
     display = document.getElementById(id).style.display;

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %} Главная {% endblock title %}
+{% block content %}
+{% if is_locked %}
+  <p>Ваш аккаунт был заблокирован. Попробуйте войти позже.</p>
+{% endif %}
+{% endblock content %}
