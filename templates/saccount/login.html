@@ -2,9 +2,19 @@
 {% block title %} Вход {% endblock title %}
 {% block content %}
 <h1>Вход</h1>
+{% if is_locked %}
+    <p>Ваш аккаунт временно заблокирован. Попробуйте позже или свяжитесь с администратором.</p>
+{% else %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
+    {% if form.non_field_errors %}
+        <p>{{ form.non_field_errors }}</p>
+    {% endif %}
     <input value="Войти" type="submit"><br/>
+    {% if remaining_attempts is not None %}
+        <p>Осталось попыток: {{ remaining_attempts }}</p>
+    {% endif %}
 </form>
+{% endif %}
 {% endblock content %}

@@ -1,2 +1,5 @@
 {% extends "base.html" %}
 {% block title %} Главная {% endblock title %}
+{% if locked %}
+<p>Вы заблокированы на 1 час</p>
+{% endif %}

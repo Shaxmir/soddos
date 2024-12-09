@@ -2,6 +2,9 @@
 {% block title %} Регистрация {% endblock title %}
 {% block content %}
 <h1>Регистрация</h1>
+{% if is_locked %}
+    <p>Вы временно заблокированны и поэтому не можете зарегестрироваться. Попробуйте позже или свяжитесь с администратором.</p>
+{% else %}
 <form method="post">
     {% csrf_token %}
     {% if form.errors %}
@@ -16,4 +19,5 @@
     {{ form.as_p }}
     <button type="submit">Зарегистрироваться</button>
 </form>
+{% endif %}
 {% endblock content %}
