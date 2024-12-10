@@ -6,10 +6,14 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/info_block.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/mini_profile.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/aut_reg.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <script src="{% static 'js/info_block.js' %}"></script>
+<script src="{% static 'js/mini_profile.js' %}"></script>
 <script type="text/javascript">
 
 function openbox(id){
@@ -27,8 +31,11 @@ function openbox(id){
         <table style="width:100%" cellspacing="0" cellpadding="0">
         <tr>
             <td class="logo"><img src="/static/images/logo.png" alt="logo"></td>
+            {% if user.is_authenticated %}
             <td class="menu"><a href="#" onclick="openbox('box'); return false"><img src="/static/images/menu.png" alt="logo"></a></td>
-    </tr>
+            {% endif %}
+        </tr>
+
 </table>
 </div>
     <div class="topmenu">
@@ -46,13 +53,35 @@ function openbox(id){
         </div>
         {% endif %}
     </div>
-    <div id="box" style="display: none;"><center>
+{% if user.is_authenticated %}
+    <div id="box" style="display: none;">
+        <center>
 
         </center>
     <div class="topmenu">
-        <!--Menu-->
+        <!--Mini profile-->
+        <div class="profile">
+        <div class="photo"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/764024/profile/profile-512.jpg" /></div>
+        <div class="content">
+            <div class="text">
+                {% if user.first_name and not user.last_name %}
+                <h3>{{ user.first_name }}</h3>
+                {% elif not user.first_name and user.last_name %}
+                <h3>{{ user.last_name }}</h3>
+                {% elif not user.first_name and not user.last_name %}
+                <h3>Вы пустышка</h3>
+                {% else %}
+                <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+                {% endif %}
+                <h6>Front-end Web Designer</h6>
+            </div>
+            <div class="btn"><span></span></div>
+        </div>
+    <div class="box"><i class="fa fa-vk"></i><i class="fa fa-github"></i><i class="fa fa-paper-plane"></i></div>
+        </div>
     </div>
     </div>
+{% endif %}
     <div class="content">
         {% block content %}
 <div class="post">
