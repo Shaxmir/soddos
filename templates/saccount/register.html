@@ -7,7 +7,7 @@
   <h3>Вы временно заблокированны и поэтому не можете зарегестрироваться. Попробуйте позже или свяжитесь с администратором</h3>
 </div>
 {% else %}
-<form method="post">
+<form method="post" class="form_log">
     {% csrf_token %}
     {% if form.errors %}
         <ul>

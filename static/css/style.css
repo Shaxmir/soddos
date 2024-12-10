@@ -3,7 +3,7 @@
 body {
     color: #4c4e52;
     margin: auto;
-    background: #dddede;
+    background: #fafafa;
     font-size: 14px;
     width: 100%;
     max-width: 650px;
@@ -52,7 +52,8 @@ a {
     background: #222222;
     color: #fafafa;
 }
-input[type="text"], input[type="password"] {
+
+input[type="text"], input[type="password"], input[type="email"] {
     color: #14d6a6;
     width: 60%;
     padding: 8px;
@@ -67,7 +68,7 @@ border: #14d6a6 1px solid;
     -webkit-box-shadow: 0 0 5px rgb(21, 113, 90);
 }
 
-input[type="submit"] {
+input[type="submit"], button {
 width: 30%;
 color: #14d6a6;
 padding: 9px;
@@ -142,3 +143,6 @@ text-decoration: none;
 .head a {
     padding: 20px;
   }
+
+
+

@@ -16,6 +16,11 @@ class UserRegistrationForm(UserCreationForm):
             'password': 'Повторения пароля',
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+
 class UserAuthenticationForm(AuthenticationForm):
     class Meta:
         model = User
@@ -24,3 +29,7 @@ class UserAuthenticationForm(AuthenticationForm):
             'username': 'Логин',
             'password': 'Пароль',
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
