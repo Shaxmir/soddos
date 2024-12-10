@@ -53,7 +53,7 @@ a {
     color: #fafafa;
 }
 
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], textarea {
     color: #14d6a6;
     width: 60%;
     padding: 8px;

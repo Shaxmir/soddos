@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/info_block.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/mini_profile.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/aut_reg.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -30,7 +31,7 @@ function openbox(id){
     <div class="head">
         <table style="width:100%" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="logo"><img src="/static/images/logo.png" alt="logo"></td>
+            <td class="logo"><a href="/"><img src="/static/images/logo.png" alt="logo"></a></td>
             {% if user.is_authenticated %}
             <td class="menu"><a href="#" onclick="openbox('box'); return false"><img src="/static/images/menu.png" alt="logo"></a></td>
             {% endif %}
@@ -40,7 +41,7 @@ function openbox(id){
 </div>
     <div class="topmenu">
         <a href="/">Статьи</a>
-        <a href="/">Чат</a>
+        <a href="/schat/chat">Чат</a>
         {% if user.is_authenticated %}
         <div style="float: right">
             <span>Привет {{ user.username }}</span>
@@ -74,6 +75,9 @@ function openbox(id){
                 <h3>{{ user.first_name }} {{ user.last_name }}</h3>
                 {% endif %}
                 <h6>Front-end Web Designer</h6>
+                {% if user.is_staff %}
+                <h6 style="color: #ff7530;">ADMIN</h6>
+                {% endif %}
             </div>
             <div class="btn"><span></span></div>
         </div>

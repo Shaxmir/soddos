@@ -1,0 +1,64 @@
+/* Chat containers */
+.message_container {
+    width:100%;
+}
+.message_block {
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    border: 2px solid #525252 ;
+    background-color: #171717 ;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    color: #fff;
+    width: 80%;
+}
+.container h5 {
+    color: #84c636
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #e6e6e6 ;
+    color: #000;
+    float: right;
+
+}
+
+/* Clear floats */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #84c636 ;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}
