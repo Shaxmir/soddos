@@ -7,8 +7,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'content']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'value': '{{post.title}}'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'value': '{{post.content}}'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'content': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
             'title': 'Заголовок',

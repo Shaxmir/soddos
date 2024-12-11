@@ -5,10 +5,21 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+    --background-color: #fafafa;
+}
+
+[data-theme="dark"] {
+    --background-color: #000000;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
 body {
     color: #4c4e52;
     margin: auto;
-    background: #fafafa;
     font-size: 14px;
     width: 100%;
     max-width: 650px;

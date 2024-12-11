@@ -4,6 +4,12 @@
 <meta http-equiv="Content-Type" content="charset=utf-8"/>
 <title>{% block title %} Аномимный портал {% endblock title %}</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
+<script>
+// Проверяем сохранённую тему в LocalStorage
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/themebtn.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/info_block.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/mini_profile.css' %}" />
@@ -11,7 +17,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/posts.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'css/themebtn.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -97,13 +102,21 @@ function openbox(id){
                         сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании модели развития.</div>
 				</div>
         <div class="tmenu"><img src="/static/images/menu.png" alt="."></div>
-        <div class="post2">
-
-					<div class="title">Статья 423</div>
-					<div class="description2">Повседневная практика показывает, что рамки и место обучения кадров способствует подготовки и реализации позиций,
-                        занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна, что постоянный количественный рост и
-                        сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании модели развития.</div>
-     <i class="fa fa-comments" aria-hidden="true"></i> <a href="/"> Комментарии</a>
+        {% for post_detal in posts %}
+    <div class="post2">
+        <div class="title"><a href="{{post_detal.get_absolute_url}}">{{post_detal.title}}</a>
+            {% if post_detal.create_dt != post_detal.update_dt %}
+            <i class="fa fa-pencil" aria-hidden="true" title="Пост обновлен: {{post_detal.update_dt}}"></i>
+            {% endif %}
+        </div>
+        <div class="author" >{{post_detal.author.username}} <i class="fa fa-user" aria-hidden="true"></i></div>
+        <div class="description2">{{post_detal.content}}</div>
+        <div class="commet_dt">
+         <i class="fa fa-comments" aria-hidden="true"><a href="/"> Комментарии(пока нет)</a></i>
+         <i class="fa fa-calendar" aria-hidden="true" style="float: right;"> {{post_detal.create_dt}}</i>
+        </div>
+    </div>
+    {% endfor %}
 
 				</div>
 {% endblock content %}
