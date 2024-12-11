@@ -19,6 +19,6 @@
     transition-duration: 1s;
 }
 .btn.btn-secondary:hover {
-    box-shadow: 5px 5px 5px 5px #fff;
+    box-shadow: 0px 0px 1px 1px #fff;
     transition-duration: 1s;
 }

@@ -53,6 +53,7 @@ def edit_post(request, id):
     if request.method == 'POST':
         if form.is_valid():
             post = form.save(commit=False)
+            post.author = request.user
             post.save()
             return redirect('/spost/post/')
     else:

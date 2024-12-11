@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/posts.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/themebtn.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -107,12 +108,19 @@ function openbox(id){
 				</div>
 {% endblock content %}
     </div>
-    <div class="foot"><div class="foot_l">
+    <div class="foot">
+    <div class="foot_l">
 <a href="">Партнеры</a>
 <a href="">Реклама</a>
-<a href="">Сотрудничество</a></div><br>
+<a href="">Сотрудничество</a>
+    </div><br>
 © 2017 Все права защищены.
+<main>
+	<input class="theme-toggle" id="theme-toggle">
+</main>
 </div>
 <script src="{% static 'js/info_block.js' %}"></script>
 <script src="{% static 'js/mini_profile.js' %}"></script>
+<script src="{% static 'js/themebtn.js' %}"></script>
+
 </body></html>
