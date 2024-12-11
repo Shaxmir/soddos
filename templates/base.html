@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/mini_profile.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/aut_reg.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -38,7 +39,7 @@ function openbox(id){
 </table>
 </div>
     <div class="topmenu">
-        <a href="/">Статьи</a>
+        <a href="/spost/post">Статьи</a>
         <a href="/schat/chat">Чат</a>
         {% if user.is_authenticated %}
         <div style="float: right">

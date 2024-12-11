@@ -27,4 +27,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('saccount/', include('saccount.urls')),
     path('schat/', include('schat.urls')),
+    path('spost/', include('spost.urls')),
 ]
