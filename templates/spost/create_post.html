@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %} Главная {% endblock title %}
+{% block content %}
+<form method="post" class="form_log">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Опубликовать</button>
+  </form>
+{% endblock content %}

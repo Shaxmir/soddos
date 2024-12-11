@@ -110,9 +110,37 @@ text-decoration: none;
     margin: 0 0 5px 0;
 
 }
+.but {
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 2px #c4c4c4;
+    margin: 0 0 5px 0;
+}
+.but.red {
+    color: #80c72b;
+}
+.but.red a{
+    color: #80c72b;
+}
+.but.del {
+    color: red;
+}
+.but.del a{
+    color: red;
+}
+.but.rep {
+    color: red;
+}
+.but.rep a{
+    color: red;
+}
 .description {
     color: #fff;
     
+}
+.description1 {
+    color: #4c4e52;
+    padding: 10px;
 }
 .description2 {
     color: #4c4e52;

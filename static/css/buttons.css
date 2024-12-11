@@ -1,0 +1,16 @@
+.button{
+    display: flex;
+    justify-content: center;
+	text-decoration: none;
+	color: #14b990;
+	font-weight: bold;
+	font-size: 20px;
+	position: relative;
+	padding: 10px;
+}
+
+
+.button:hover {
+    text-decoration: underline;
+    transition: width 0.3s ease;
+}
