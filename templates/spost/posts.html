@@ -26,6 +26,7 @@
     </div>
     {% endfor %}
     {% elif post %}
+    <a href="/spost/post/" class="btn btn-secondary">Назад</a>
     <div class="post2">
         <div class="title">{{post.title}}
             {% if post.create_dt != post.update_dt %}
