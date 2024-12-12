@@ -98,7 +98,6 @@ background: #222222;
 padding: 20px;
 color: #14b990;
 font-size: 13px;
-box-shadow: 0px 2px 2px #c4c4c4;
 }
 .foot_l a {
 display: inline-block;
@@ -195,5 +194,13 @@ text-decoration: none;
     padding: 20px;
   }
 
+.menu a {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+   }
+.menu a span {
+    margin-right: 5px;
+    }
 
 

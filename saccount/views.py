@@ -3,12 +3,20 @@ from datetime import datetime
 from http.client import responses
 from axes.utils import get_client_ip_address
 from axes.models import AccessAttempt
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import UserRegistrationForm, UserAuthenticationForm
+from .forms import UserRegistrationForm, UserAuthenticationForm, ProfileImgForm
+from .models import ProfileImg
+
+
 # Create your views here.
 
+def profile(request):
+    prof = get_object_or_404(User, id=request.user.id)
+    avatar = request.user
+    return render(request, 'saccount/profile.html', context={'prof': prof, 'avatar': avatar})
 
 def register_view(request):
     is_locked = False
@@ -100,3 +108,14 @@ def logout_view(request):
     #Удаляем куки
 
     return  redirect('/')
+
+def edit_profile(request):
+    profile = request.user.profile_img
+    if request.method == 'POST':
+        form = ProfileImgForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('/saccount/profile/')
+    else:
+        form = ProfileImgForm(instance=profile)
+    return render(request, 'saccount/edit_profile.html', {'form': form})

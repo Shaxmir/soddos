@@ -183,3 +183,11 @@ AXES_LOCK_OUT_AT_FAILURE = True  # Включение блокировки на 
     Добавляет в админку функционал Axes. Логи доступа, Ошибки доступа  и Попытки доступа
 """
 AXES_ENABLE_ADMIN = True
+
+
+"""
+    Настройки аватара
+"""
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
