@@ -1,0 +1,13 @@
+.form_log {
+    display: flex;
+    flex-direction: column;
+}
+.form_log p label {
+    display: block;
+    padding: 10px;
+}
+.form_log p input {
+    display: block;
+    padding: 10px;
+    border-radius: 25px;
+}

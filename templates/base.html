@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+{% load static %}
+<html><head>
+<meta http-equiv="Content-Type" content="charset=utf-8"/>
+<title>{% block title %} Аномимный портал {% endblock title %}</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<script>
+// Проверяем сохранённую тему в LocalStorage
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/themebtn.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/info_block.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/mini_profile.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/aut_reg.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/buttons.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/posts.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="head">
+        <table style="width:100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="logo"><a href="/"><img src="/static/images/logo.png" alt="logo"></a></td>
+            {% if user.is_authenticated %}
+            <td class="menu"><a href="/saccount/profile/" ><span>{{ user.username }} </span><i class="fa fa-user" aria-hidden="true"></i></a></td>
+            {% endif %}
+        </tr>
+</table>
+</div>
+    <div class="topmenu">
+        <a href="/spost/post">Статьи</a>
+        <a href="/schat/chat">Чат</a>
+        {% if user.is_authenticated %}
+        <div style="float: right">
+            <span>Привет {{ user.username }}</span>
+            <a href="/saccount/logout/">Выйти</a>
+        </div>
+        {% else %}
+        <div style="float: right">
+            <a href="/saccount/register/">Регистрация</a>
+            <a href="/saccount/login/">Вход</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+<div class="post">
+
+					<div class="title">eval() я всё и всех</div>
+					<div class="description">Повседневная практика показывает, что рамки и место обучения кадров способствует подготовки и реализации позиций,
+                        занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна, что постоянный количественный рост и
+                        сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании модели развития.</div>
+				</div>
+        <div class="tmenu"><img src="/static/images/menu.png" alt="."></div>
+        {% for post_detal in posts %}
+    <div class="post2">
+        <div class="title"><a href="{{post_detal.get_absolute_url}}">{{post_detal.title}}</a>
+            {% if post_detal.create_dt != post_detal.update_dt %}
+            <i class="fa fa-pencil" aria-hidden="true" title="Пост обновлен: {{post_detal.update_dt}}"></i>
+            {% endif %}
+        </div>
+        <div class="author" >{{post_detal.author.username}} <i class="fa fa-user" aria-hidden="true"></i></div>
+        <div class="description2">{{post_detal.content}}</div>
+        <div class="commet_dt">
+         <i class="fa fa-comments" aria-hidden="true"><a href="/"> Комментарии(пока нет)</a></i>
+         <i class="fa fa-calendar" aria-hidden="true" style="float: right;"> {{post_detal.create_dt}}</i>
+        </div>
+    </div>
+    {% endfor %}
+
+				</div>
+{% endblock content %}
+    </div>
+    <div class="foot">
+    <div class="foot_l">
+<a href="">Партнеры</a>
+<a href="">Реклама</a>
+<a href="">Сотрудничество</a>
+    </div><br>
+© 2017 Все права защищены.
+<main>
+	<input class="theme-toggle" id="theme-toggle">
+</main>
+</div>
+<script src="{% static 'js/info_block.js' %}"></script>
+<script src="{% static 'js/mini_profile.js' %}"></script>
+<script src="{% static 'js/themebtn.js' %}"></script>
+
+</body></html>

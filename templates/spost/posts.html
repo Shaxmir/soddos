@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %} Главная {% endblock title %}
+{% if locked %}
+<p>Вы заблокированы на 1 час</p>
+{% endif %}
+{% block content %}
+{% if request.user.is_authenticated and posts%}
+<a href="create_post/" class="button five">Создать пост</a>
+{% endif %}
+
+<div class="block_post">
+    {% if posts %}
+    {% for post_detal in posts %}
+    <div class="post2">
+        <div class="title"><a href="{{post_detal.get_absolute_url}}">{{post_detal.title}}</a>
+            {% if post_detal.create_dt != post_detal.update_dt %}
+            <i class="fa fa-pencil" aria-hidden="true" title="Пост обновлен: {{post_detal.update_dt}}"></i>
+            {% endif %}
+        </div>
+        <div class="author" >{{post_detal.author.username}} <i class="fa fa-user" aria-hidden="true"></i></div>
+        <div class="description2">{{post_detal.content}}</div>
+        <div class="commet_dt">
+         <i class="fa fa-comments" aria-hidden="true"><a href="/"> Комментарии(пока нет)</a></i>
+         <i class="fa fa-calendar" aria-hidden="true" style="float: right;"> {{post_detal.create_dt}}</i>
+        </div>
+    </div>
+    {% endfor %}
+    {% elif post %}
+    <a href="/spost/post/" class="btn btn-secondary">Назад</a>
+    <div class="post2">
+        <div class="title">{{post.title}}
+            {% if post.create_dt != post.update_dt %}
+            <i class="fa fa-pencil" aria-hidden="true" title="Пост обновлен: {{post_detal.update_dt}}"></i>
+            {% endif %}
+        </div>
+        <div class="author" >{{post.author.username}} <i class="fa fa-user" aria-hidden="true"></i></div>
+        <div class="description1">{{post.content}}</div>
+        <div class="commet_dt">
+         <i class="fa fa-calendar" aria-hidden="true" > {{post.create_dt}}</i>
+        </div>
+    </div>
+    {% if request.user.id == post.author.id or request.user.is_staff == True %}
+    <div class="but red"><i class="fa fa-pencil" aria-hidden="true"></i> <a href="edit_post/">Редактировать</a></div>
+    <div class="but del"><i class="fa fa-trash-o" aria-hidden="true"></i> <a href="del_post/">Удалить</a></div>
+    {% endif %}
+    <div class="but rep"><i class="fa fa-flag" aria-hidden="true"></i> <a href="#">Пожаловаться</a></div>
+    {% else %}
+    <div class="post2">
+        <div class="title">Постов в данный момент нет</div>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

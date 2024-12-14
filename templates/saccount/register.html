@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Регистрация {% endblock title %}
+{% block content %}
+<h1>Регистрация</h1>
+{% if is_locked %}
+<div class="alert danger-alert">
+  <h3>Вы временно заблокированны и поэтому не можете зарегестрироваться. Попробуйте позже или свяжитесь с администратором</h3>
+</div>
+{% else %}
+<form method="post" class="form_log">
+    {% csrf_token %}
+    {% if form.errors %}
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрироваться</button>
+</form>
+{% endif %}
+{% endblock content %}

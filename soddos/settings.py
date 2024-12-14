@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os.path
 from pathlib import Path
-
+from decouple import config
+import dj_database_url
 from django.conf.global_settings import STATICFILES_DIRS, STATIC_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-dy-attre_0v=6ss2g%^!rgyra!oo+-#+)(_!rq06_z@9_evws7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -39,10 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'soddos_one'
+    'soddos_one',# Добавляем первое приложени
+    'saccount',# Добавляем приложение со входом и регистрацией
+    'axes',# Добавляем AXES
+    'schat',# Добавляем приложение Чат
+    'spost',# Добавляем приложение Посты
 ]
 
 MIDDLEWARE = [
+    'axes.middleware.AxesMiddleware',# добавляем Axes Middleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,11 +85,23 @@ WSGI_APPLICATION = 'soddos.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+
+SESSION_COOKIE_SECURE = True  # Использовать только HTTPS для передачи сессий
+CSRF_COOKIE_SECURE = True    # Использовать только HTTPS для передачи CSRF-токенов
+
+SECURE_BROWSER_XSS_FILTER = True       # Включает XSS-фильтр браузера
+SECURE_CONTENT_TYPE_NOSNIFF = True    # Предотвращает MIME-атаку
+X_FRAME_OPTIONS = 'DENY'              # Запрещает загрузку вашего сайта в iframe
+SECURE_HSTS_SECONDS = 31536000        # Включает HSTS на год
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True # HSTS также для поддоменов
 
 
 # Password validation
@@ -135,3 +153,41 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+"""
+    Бакэнды
+"""
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',  # Axes
+    'django.contrib.auth.backends.ModelBackend',  # Django стандартная
+
+]
+
+"""
+    Решить проблему с разделением кукисов пользователя и админа. Узнаем только после перекидывания на хостинг
+"""
+#SESSION_COOKIE_NAME = 'user_sessionid'  # Для сайта пользователей
+#CSRF_COOKIE_NAME = 'user_csrftoken'  # Для сайта пользователей
+#SESSION_COOKIE_PATH = '/'
+
+
+"""
+    Настройки для django-axes в settings.py
+"""
+AXES_FAILURE_LIMIT = 5  # Максимальное количество неудачных попыток
+AXES_COOLOFF_TIME = 1  # Время блокировки в часах
+AXES_LOCK_OUT_AT_FAILURE = True  # Включение блокировки на основе неудачных попыток
+
+"""
+    Добавляет в админку функционал Axes. Логи доступа, Ошибки доступа  и Попытки доступа
+"""
+AXES_ENABLE_ADMIN = True
+
+
+"""
+    Настройки аватара
+"""
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

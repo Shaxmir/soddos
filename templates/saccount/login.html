@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Вход {% endblock title %}
+{% block content %}
+<h1>Вход</h1>
+{% if is_locked %}
+<div class="alert danger-alert">
+  <h3>Ваш аккаунт временно заблокирован. Попробуйте позже или свяжитесь с администратором</h3>
+</div>
+{% else %}
+<form method="post" class="form_log">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if form.non_field_errors %}
+        <p>{{ form.non_field_errors }}</p>
+    {% endif %}
+    <input value="Войти" type="submit"><br/>
+    {% if remaining_attempts is not None %}
+        <p>Осталось попыток: {{ remaining_attempts }}</p>
+    {% endif %}
+</form>
+{% endif %}
+{% endblock content %}

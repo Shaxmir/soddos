@@ -1,0 +1,24 @@
+.author {
+    text-align: center;
+    display: block;
+
+}
+.fa-user {
+    color: red;
+}
+.commet_dt {
+    padding: 10px;
+}
+
+.btn.btn-secondary {
+    display: block;
+    color: #549b83;
+    background-color: #171717;
+    text-align: center;
+    padding: 5px;
+    transition-duration: 1s;
+}
+.btn.btn-secondary:hover {
+    box-shadow: 0px 0px 1px 1px #fff;
+    transition-duration: 1s;
+}

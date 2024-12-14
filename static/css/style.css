@@ -1,9 +1,25 @@
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 @import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+    --background-color: #fafafa;
+}
+
+[data-theme="dark"] {
+    --background-color: #000000;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
 body {
     color: #4c4e52;
     margin: auto;
-    background: #dddede;
     font-size: 14px;
     width: 100%;
     max-width: 650px;
@@ -52,7 +68,8 @@ a {
     background: #222222;
     color: #fafafa;
 }
-input[type="text"], input[type="password"] {
+
+input[type="text"], input[type="password"], input[type="email"], textarea {
     color: #14d6a6;
     width: 60%;
     padding: 8px;
@@ -67,7 +84,7 @@ border: #14d6a6 1px solid;
     -webkit-box-shadow: 0 0 5px rgb(21, 113, 90);
 }
 
-input[type="submit"] {
+input[type="submit"], button {
 width: 30%;
 color: #14d6a6;
 padding: 9px;
@@ -81,7 +98,6 @@ background: #222222;
 padding: 20px;
 color: #14b990;
 font-size: 13px;
-box-shadow: 0px 2px 2px #c4c4c4;
 }
 .foot_l a {
 display: inline-block;
@@ -107,13 +123,48 @@ text-decoration: none;
     padding: 10px;
     box-shadow: 0px 2px 2px #c4c4c4;
     margin: 0 0 5px 0;
+
+}
+.but {
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 2px #c4c4c4;
+    margin: 0 0 5px 0;
+}
+.but.red {
+    color: #80c72b;
+}
+.but.red a{
+    color: #80c72b;
+}
+.but.del {
+    color: red;
+}
+.but.del a{
+    color: red;
+}
+.but.rep {
+    color: red;
+}
+.but.rep a{
+    color: red;
 }
 .description {
     color: #fff;
     
 }
+.description1 {
+    color: #4c4e52;
+    padding: 10px;
+}
 .description2 {
     color: #4c4e52;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
 }
 /* pc */
 @media all and (min-width: 1000px){
@@ -142,3 +193,14 @@ text-decoration: none;
 .head a {
     padding: 20px;
   }
+
+.menu a {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+   }
+.menu a span {
+    margin-right: 5px;
+    }
+
+
